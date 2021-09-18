@@ -7,4 +7,11 @@ describe('Packer Test', () => {
 
     expect(result).toEqual('')
   })
+
+  it('should throw an "File not found" when file is no valid', async () => {
+    const filepath = 'invalid_file'
+    const promise = Packer.pack(filepath)
+
+    await expect(promise).rejects.toThrow('Error: File not found')
+  })
 })
