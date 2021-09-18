@@ -1,10 +1,11 @@
 import path from 'path'
 import fs from 'fs'
 import util from 'util'
+import { ExistFile } from './protocols/exists-file'
 
 const accessAsync = util.promisify(fs.access)
 
-export class ManageFile {
+export class ManageFile implements ExistFile {
   constructor(private readonly filepath: string) { }
 
   async existsFile(): Promise<boolean> {
