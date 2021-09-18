@@ -4,10 +4,10 @@ import util from 'util'
 
 const accessAsync = util.promisify(fs.access)
 
-export class ReadFile {
+export class ManageFile {
   constructor(private readonly filepath: string) { }
 
-  async fileExists(): Promise<boolean> {
+  async existsFile(): Promise<boolean> {
     const resolvedPath = path.join(path.resolve(), this.filepath)
     try {
       await accessAsync(resolvedPath)
