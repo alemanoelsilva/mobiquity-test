@@ -1,3 +1,4 @@
+import { ApiError } from './errors/api-error'
 import { ReadFile } from './utils/file/read-file'
 
 export class Packer {
@@ -7,7 +8,7 @@ export class Packer {
     const isValidFile = await readFile.fileExists()
 
     if (!isValidFile) {
-      throw new Error('File not found')
+      throw new ApiError('File not found')
     }
 
     return ''
