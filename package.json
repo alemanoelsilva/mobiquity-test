@@ -11,7 +11,7 @@
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:staged": "npm test -- --findRelatedTests",
     "lint": "eslint 'src/**'",
-    "lint:fix": "eslint 'src/**' --fix"
+    "lint:fix": "eslint '**/**.*s' --fix"
   },
   "engines": {
     "node": "14.0.0",
