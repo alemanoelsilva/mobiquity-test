@@ -20,4 +20,14 @@ describe('Package Validator Test', () => {
       }
     })
   })
+
+  describe('Validate item package limit', () => {
+    it('should return true when limit is equal or less than 15', () => {
+      const packageValidator = new PackageValidator()
+
+      const result = packageValidator.validteItemLimit(1)
+
+      expect(result).toBeTruthy()
+    })
+  })
 })
