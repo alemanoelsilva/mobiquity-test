@@ -56,5 +56,21 @@ describe('Package Validator Test', () => {
 
       expect(result).toBeTruthy()
     })
+
+    it('should throw an error when price is higher than 100', () => {
+      const packageValidator = new PackageValidator()
+
+      const packageOption: PackagesOptionDto = {
+        index: 1,
+        price: 100.50,
+        weight: 80
+      }
+
+      try {
+        packageValidator.validatePriceAndWeight(packageOption)
+      } catch (error) {
+        expect(error.message).toEqual('Error: The package price (100.5) is invalid, must be less than 100')
+      }
+    })
   })
 })
