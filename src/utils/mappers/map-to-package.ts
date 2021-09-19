@@ -1,7 +1,7 @@
 import { PackageDto, PackagesOptionDto } from '../../domain/package-dto'
 
 export class MapToPackage {
-  map(fileline: string): PackageDto {
+  mapPackage(fileline: string): PackageDto {
     const [packageLimitWeight, options] = fileline.split(':')
 
     const packagesOptions: PackagesOptionDto[] = options

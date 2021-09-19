@@ -7,7 +7,7 @@ describe('MapToPackage Test', () => {
 
     const fileline = '81 : (1,53.38,€45) (2,88.62,€98) (3,78.48,€3) (4,72.30,€76) (5,30.18,€9) (6,46.34,€48)'
 
-    const result: PackageDto = mapToPackage.map(fileline)
+    const result: PackageDto = mapToPackage.mapPackage(fileline)
 
     expect(result).toEqual({
       packageLimitWeight: 81,
