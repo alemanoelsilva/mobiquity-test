@@ -51,4 +51,28 @@ describe('Package Validator Test', () => {
 
     expect(result).toBeTruthy()
   })
+
+  it('should throw an error when validateWeightLimit throws', () => {
+    const { sut, packageValidationStub } = makeSut()
+
+    const fakeError = new Error('Fake Error')
+
+    jest.spyOn(packageValidationStub, 'validateWeightLimit')
+      .mockImplementation(() => {
+        throw fakeError
+      })
+
+    const packages: PackageDto[] = [
+      {
+        packageLimitWeight: 100,
+        packagesOptions: [{ index: 1, weight: 50, price: 10 }]
+      }
+    ]
+
+    try {
+      sut.validate(packages)
+    } catch (error) {
+      expect(error.message).toEqual('Fake Error')
+    }
+  })
 })
