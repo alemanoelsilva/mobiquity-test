@@ -3,10 +3,18 @@ import { PackageValidator } from './package-validator'
 
 describe('Package Validator Test', () => {
   describe('Validate weight package limit', () => {
-    it('should true when weight is equal or less than 100', () => {
+    it('should true when weight is less than 100', () => {
       const packageValidator = new PackageValidator()
 
       const result = packageValidator.validateWeightLimit(1)
+
+      expect(result).toBeTruthy()
+    })
+
+    it('should true when weight is equal 100', () => {
+      const packageValidator = new PackageValidator()
+
+      const result = packageValidator.validateWeightLimit(100)
 
       expect(result).toBeTruthy()
     })
@@ -23,10 +31,18 @@ describe('Package Validator Test', () => {
   })
 
   describe('Validate item package limit', () => {
-    it('should return true when limit is equal or less than 15', () => {
+    it('should return true when limit is less than 15', () => {
       const packageValidator = new PackageValidator()
 
       const result = packageValidator.validteItemLimit(1)
+
+      expect(result).toBeTruthy()
+    })
+
+    it('should return true when limit is equal 15', () => {
+      const packageValidator = new PackageValidator()
+
+      const result = packageValidator.validteItemLimit(15)
 
       expect(result).toBeTruthy()
     })
