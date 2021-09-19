@@ -28,4 +28,11 @@ describe('Packer Test', () => {
     const result = await Packer.pack(filepath)
     expect(result).toEqual('Error: The package items (16) is invalid, must be equal or less than 15')
   })
+
+  it('should return an error when the pricce of package is invalid', async () => {
+    const filepath = 'resources/example_invalid_input_price_limit'
+
+    const result = await Packer.pack(filepath)
+    expect(result).toEqual('Error: The package price (150) is invalid, must be equal or less than 100')
+  })
 })
