@@ -1,21 +1,35 @@
 import { ManageFile } from './manage-file'
 
-describe('ReadFile Test', () => {
-  it('should return true when path is valid', async () => {
-    const filepath = 'resources/example_input'
-    const manageFile = new ManageFile(filepath)
+const VALID_FILE_PATH = 'resources/example_input'
+const INVALID_FILE_PATH = 'invalid_file'
 
-    const result = await manageFile.existsFile()
+describe('ManageFile Test', () => {
+  describe('Validate if file exist', () => {
+    it('should return true when path is valid', async () => {
+      const manageFile = new ManageFile(VALID_FILE_PATH)
 
-    expect(result).toBeTruthy()
+      const result = await manageFile.existsFile()
+
+      expect(result).toBeTruthy()
+    })
+
+    it('should return false when path is not valid', async () => {
+      const manageFile = new ManageFile(INVALID_FILE_PATH)
+
+      const result = await manageFile.existsFile()
+
+      expect(result).toBeFalsy()
+    })
   })
 
-  it('should return false when path is not valid', async () => {
-    const filepath = 'invalid_file'
-    const manageFile = new ManageFile(filepath)
+  describe('Read file and return an array of string', () => {
+    it('should return an array', async () => {
+      const manageFile = new ManageFile(VALID_FILE_PATH)
 
-    const result = await manageFile.existsFile()
+      const result = await manageFile.readFile()
 
-    expect(result).toBeFalsy()
+      expect(result).toBeInstanceOf(Array)
+      expect(result.length).toEqual(4)
+    })
   })
 })
