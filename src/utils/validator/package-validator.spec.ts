@@ -17,7 +17,7 @@ describe('Package Validator Test', () => {
       try {
         packageValidator.validateWeightLimit(101)
       } catch (error) {
-        expect(error.message).toEqual('Error: The package weight (101) is invalid, must be less than 100')
+        expect(error.message).toEqual('Error: The package weight (101) is invalid, must be equal or less than 100')
       }
     })
   })
@@ -37,7 +37,7 @@ describe('Package Validator Test', () => {
       try {
         packageValidator.validteItemLimit(16)
       } catch (error) {
-        expect(error.message).toEqual('Error: The package items (16) is invalid, must be less than 15')
+        expect(error.message).toEqual('Error: The package items (16) is invalid, must be equal or less than 15')
       }
     })
   })
@@ -69,7 +69,7 @@ describe('Package Validator Test', () => {
       try {
         packageValidator.validatePriceAndWeight(packageOption)
       } catch (error) {
-        expect(error.message).toEqual('Error: The package price (100.5) is invalid, must be less than 100')
+        expect(error.message).toEqual('Error: The package price (100.5) is invalid, must be equal or less than 100')
       }
     })
 
@@ -99,7 +99,7 @@ describe('Package Validator Test', () => {
       try {
         packageValidator.validatePriceAndWeight(packageOption)
       } catch (error) {
-        expect(error.message).toEqual('Error: The package weight (101) is invalid, must be less than 100')
+        expect(error.message).toEqual('Error: The package weight (101) is invalid, must be equal or less than 100')
       }
     })
   })
