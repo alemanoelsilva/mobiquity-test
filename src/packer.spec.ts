@@ -5,7 +5,7 @@ describe('Packer Test', () => {
     const filepath = 'resources/example_input'
     const result = await Packer.pack(filepath)
 
-    expect(result).toEqual('')
+    expect(result.length).toEqual(4)
   })
 
   it('should throw an "File not found" when file is no valid', async () => {
