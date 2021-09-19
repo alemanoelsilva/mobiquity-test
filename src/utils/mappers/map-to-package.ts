@@ -1,4 +1,4 @@
-import { PackageDto, PackagesOptionDto } from '../../domain/package-dto'
+import { PackageDto, PackagesOptionDto } from '../../domain/models/package-dto'
 
 export class MapToPackage {
   mapPackage(fileline: string): PackageDto {

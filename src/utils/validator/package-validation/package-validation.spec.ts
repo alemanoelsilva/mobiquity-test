@@ -1,4 +1,4 @@
-import { PackagesOptionDto } from '../../../domain/package-dto'
+import { PackagesOptionDto } from '../../../domain/models/package-dto'
 import { PackageValidation } from './package-validation'
 
 describe('Package Validator Test', () => {

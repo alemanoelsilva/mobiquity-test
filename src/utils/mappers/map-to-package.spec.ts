@@ -1,4 +1,4 @@
-import { PackageDto } from '../../domain/package-dto'
+import { PackageDto } from '../../domain/models/package-dto'
 import { MapToPackage } from './map-to-package'
 
 describe('MapToPackage Test', () => {

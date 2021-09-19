@@ -1,4 +1,4 @@
-import { PackageDto } from '../../domain/package-dto'
+import { PackageDto } from '../../domain/models/package-dto'
 import { PackageValidation } from './package-validation/package-validation'
 import { PackageValidator } from './package-validator'
 

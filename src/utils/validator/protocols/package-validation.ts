@@ -1,4 +1,4 @@
-import { PackagesOptionDto } from '../../../domain/package-dto'
+import { PackagesOptionDto } from '../../../domain/models/package-dto'
 
 export enum PACKAGE {
   WEIGHT_LIMIT = 100,

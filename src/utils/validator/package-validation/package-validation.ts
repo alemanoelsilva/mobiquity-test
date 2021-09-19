@@ -1,4 +1,4 @@
-import { PackagesOptionDto } from '../../../domain/package-dto'
+import { PackagesOptionDto } from '../../../domain/models/package-dto'
 import { ApiError } from '../../../errors/api-error'
 import {
   PackageWeightLimitValidator,
