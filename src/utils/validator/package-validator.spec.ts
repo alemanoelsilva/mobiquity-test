@@ -1,3 +1,4 @@
+import { PackagesOptionDto } from '../../domain/package-dto'
 import { PackageValidator } from './package-validator'
 
 describe('Package Validator Test', () => {
@@ -38,6 +39,22 @@ describe('Package Validator Test', () => {
       } catch (error) {
         expect(error.message).toEqual('Error: The package items (16) is invalid, must be less than 15')
       }
+    })
+  })
+
+  describe('Validate price and weight package', () => {
+    it('should return true when the price of the package is valid', () => {
+      const packageValidator = new PackageValidator()
+
+      const packageOption: PackagesOptionDto = {
+        index: 1,
+        price: 50.50,
+        weight: 80
+      }
+
+      const result = packageValidator.validatePriceAndWeight(packageOption)
+
+      expect(result).toBeTruthy()
     })
   })
 })
