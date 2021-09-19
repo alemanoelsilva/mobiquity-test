@@ -1,6 +1,9 @@
+import { PackagesOptionDto } from '../../../domain/package-dto'
+
 export enum PACKAGE {
   WEIGHT_LIMIT = 100,
-  ITEMS_LIMIT = 15
+  ITEMS_LIMIT = 15,
+  PRICE_LIMIT = 100
 }
 
 export interface PackageWeightLimitValidator {
@@ -9,4 +12,8 @@ export interface PackageWeightLimitValidator {
 
 export interface PackageItemLimitValidator {
   validteItemLimit: (items: number) => boolean
+}
+
+export interface PackagePriceAndWeightLimitValidator {
+  validatePriceAndWeight: (packageOption: PackagesOptionDto) => boolean
 }
