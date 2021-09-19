@@ -1,34 +1,14 @@
-import { PackagesOptionDto } from '../../domain/package-dto'
-import { ApiError } from '../../errors/api-error'
-import {
-  PackageWeightLimitValidator,
-  PackageItemLimitValidator,
-  PackagePriceAndWeightLimitValidator,
-  PACKAGE
-} from './protocols/package-weight-limit-validator'
+import { PackageDto } from '../../domain/package-dto'
+import { PackageValidation } from './package-validation/package-validation'
+import { Validator } from './protocols/package-validator'
+export class PackageValidator implements Validator {
+  constructor(private readonly packageValidation: PackageValidation) { }
 
-export class PackageValidator implements PackageWeightLimitValidator, PackageItemLimitValidator, PackagePriceAndWeightLimitValidator {
-  validateWeightLimit(weight: number): boolean {
-    if (weight > PACKAGE.WEIGHT_LIMIT) {
-      throw new ApiError(`The package weight (${weight}) is invalid, must be equal or less than 100`)
-    }
-    return true
-  }
-
-  validteItemLimit(items: number): boolean {
-    if (items > PACKAGE.ITEMS_LIMIT) {
-      throw new ApiError(`The package items (${items}) is invalid, must be equal or less than 15`)
-    }
-    return true
-  }
-
-  validatePriceAndWeight(packageOption: PackagesOptionDto): boolean {
-    if (packageOption.price > PACKAGE.PRICE_LIMIT) {
-      throw new ApiError(`The package price (${packageOption.price}) is invalid, must be equal or less than 100`)
-    }
-
-    if (packageOption.weight > PACKAGE.WEIGHT_LIMIT) {
-      throw new ApiError(`The package weight (${packageOption.weight}) is invalid, must be equal or less than 100`)
+  validate(packages: PackageDto[]): boolean {
+    for (const pkg of packages) {
+      this.packageValidation.validateWeightLimit(pkg.packageLimitWeight)
+      this.packageValidation.validteItemLimit(pkg.packagesOptions.length)
+      pkg.packagesOptions.forEach(this.packageValidation.validatePriceAndWeight)
     }
 
     return true
