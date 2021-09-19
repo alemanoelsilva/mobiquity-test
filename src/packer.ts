@@ -2,7 +2,7 @@ import { ApiError } from './errors/api-error'
 import { ManageFile } from './utils/file/manage-file'
 
 export class Packer {
-  static async pack(inputFile: string): Promise<string> {
+  static async pack(inputFile: string): Promise<string[]> {
     const manageFile = new ManageFile(inputFile)
 
     const isValidFile = await manageFile.existsFile()
@@ -11,6 +11,8 @@ export class Packer {
       throw new ApiError('File not found')
     }
 
-    return ''
+    const packages = await manageFile.readFile()
+
+    return packages
   }
 }
