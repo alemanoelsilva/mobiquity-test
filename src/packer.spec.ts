@@ -10,8 +10,15 @@ describe('Packer Test', () => {
 
   it('should throw an "File not found" when file is no valid', async () => {
     const filepath = 'invalid_file'
-    const promise = Packer.pack(filepath)
+    const result = await Packer.pack(filepath)
 
-    await expect(promise).rejects.toThrow('Error: File not found')
+    expect(result).toEqual('Error: File not found')
+  })
+
+  it('should return an error when weight package is invalid', async () => {
+    const filepath = 'resources/example_invalid_input_weight_limit'
+
+    const result = await Packer.pack(filepath)
+    expect(result).toEqual('Error: The package weight (101) is invalid, must be equal or less than 100')
   })
 })
