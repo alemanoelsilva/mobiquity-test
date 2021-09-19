@@ -29,5 +29,15 @@ describe('Package Validator Test', () => {
 
       expect(result).toBeTruthy()
     })
+
+    it('should throw an error when limit is higher than 15', () => {
+      const packageValidator = new PackageValidator()
+
+      try {
+        packageValidator.validteItemLimit(16)
+      } catch (error) {
+        expect(error.message).toEqual('Error: The package items (16) is invalid, must be less than 15')
+      }
+    })
   })
 })
