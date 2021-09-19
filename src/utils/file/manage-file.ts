@@ -3,6 +3,7 @@ import fs from 'fs'
 import util from 'util'
 import { ExistFile } from './protocols/exists-file'
 import { ReadFile } from './protocols/read-file'
+import { ApiError } from '../../errors/api-error'
 
 const accessAsync = util.promisify(fs.access)
 const readFileAsync = util.promisify(fs.readFile)
@@ -23,9 +24,9 @@ export class ManageFile implements ExistFile, ReadFile {
     } catch (error) {
       // TO DO: implement logger
       if (error.code === 'ENOENT') {
-        return false
+        throw new ApiError(`File ${this.filepath} not found`)
       }
-      return false
+      throw new ApiError(`Interval Server Errror ${error.message}`)
     }
   }
 

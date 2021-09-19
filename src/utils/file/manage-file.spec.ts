@@ -16,9 +16,11 @@ describe('ManageFile Test', () => {
     it('should return false when path is not valid', async () => {
       const manageFile = new ManageFile(INVALID_FILE_PATH)
 
-      const result = await manageFile.existsFile()
-
-      expect(result).toBeFalsy()
+      try {
+        await manageFile.existsFile()
+      } catch (error) {
+        expect(error.message).toEqual('Error: File invalid_file not found')
+      }
     })
   })
 

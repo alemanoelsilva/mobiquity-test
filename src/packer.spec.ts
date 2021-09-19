@@ -8,11 +8,11 @@ describe('Packer Test', () => {
     expect(result.length).toEqual(4)
   })
 
-  it('should throw an "File not found" when file is no valid', async () => {
+  it('should return an error when file does not exist', async () => {
     const filepath = 'invalid_file'
     const result = await Packer.pack(filepath)
 
-    expect(result).toEqual('Error: File not found')
+    expect(result).toEqual('Error: File invalid_file not found')
   })
 
   it('should return an error when weight package is invalid', async () => {

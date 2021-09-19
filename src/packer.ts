@@ -1,4 +1,3 @@
-import { ApiError } from './errors/api-error'
 import { ManageFile } from './utils/file/manage-file'
 import { MapToPackage } from './utils/mappers/map-to-package'
 import { PackageValidation } from './utils/validator/package-validation/package-validation'
@@ -11,11 +10,7 @@ export class Packer {
       const mapToPackage = new MapToPackage()
       const packageValidator = new PackageValidator(new PackageValidation())
 
-      const isValidFile = await manageFile.existsFile()
-
-      if (!isValidFile) {
-        throw new ApiError('File not found')
-      }
+      await manageFile.existsFile()
 
       const fileContent = await manageFile.readFile()
 
@@ -25,7 +20,7 @@ export class Packer {
 
       return fileContent
     } catch (error) {
-      // TODO implements logger
+      // TO DO: implement logger
       return error.message
     }
   }
