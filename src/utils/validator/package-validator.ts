@@ -26,6 +26,11 @@ export class PackageValidator implements PackageWeightLimitValidator, PackageIte
     if (packageOption.price > PACKAGE.PRICE_LIMIT) {
       throw new ApiError(`The package price (${packageOption.price}) is invalid, must be less than 100`)
     }
+
+    if (packageOption.weight > PACKAGE.WEIGHT_LIMIT) {
+      throw new ApiError(`The package weight (${packageOption.weight}) is invalid, must be less than 100`)
+    }
+
     return true
   }
 }
