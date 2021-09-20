@@ -53,13 +53,11 @@ export class EvaluatePackageOption implements EvaluateOptions {
       })
 
     const [[bestChoice]] = [...possibilityMap.entries()]
-      .filter(([key, { weight }]) => weight <= limit)
       .sort((possibilityA, possibilityB) => possibilityA[1].price < possibilityB[1].price ? 1 : -1)
 
     return bestChoice
       .split('')
       .sort((idA, idB) => idA > idB ? 1 : -1)
-      .reduce((acc, choice) => `${acc},${choice}`, '')
-      .slice(1)
+      .join(',')
   }
 }
