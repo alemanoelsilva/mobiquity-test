@@ -22,7 +22,7 @@ export class ManageFile implements ExistFile, ReadFile {
       await accessAsync(resolvedPath)
       return true
     } catch (error) {
-      // TO DO: implement logger
+      // TODO: implement logger
       if (error.code === 'ENOENT') {
         throw new ApiError(`File ${this.filepath} not found`)
       }

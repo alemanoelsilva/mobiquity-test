@@ -2,7 +2,7 @@ import { PackageDto } from '../../domain/models/package-dto'
 import { MapToPackage } from './map-to-package'
 
 describe('MapToPackage Test', () => {
-  it.only('should return a string', () => {
+  it('should return a string', () => {
     const mapToPackage = new MapToPackage()
 
     const fileline = '81 : (1,53.38,€45) (2,88.62,€98) (3,78.48,€3) (4,72.30,€76) (5,30.18,€9) (6,46.34,€48)'
