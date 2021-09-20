@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/server.js",
-    "dev": "sucrase-node src/server.ts",
+    "build": "rimraf dist && tsc",
+    "start": "npm run build && node dist/index.js",
+    "dev": "sucrase-node src/index.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
+    "test:coverage": "npm test -- --coverage",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:staged": "npm test -- --findRelatedTests",
     "lint": "eslint 'src/**'",
@@ -46,6 +48,7 @@
     "husky": "^4.3.6",
     "jest": "^26.6.3",
     "lint-staged": "^9.5.0",
+    "rimraf": "^3.0.2",
     "sucrase": "^3.18.1",
     "ts-jest": "^26.5.6",
     "typescript": "^4.4.3"
