@@ -9,7 +9,7 @@ The class `Possibilities` generates all combinations of indexes and returns an a
 
 It also has some validators to validate some constraints, mapper to convert the plain text to JavaScript Object and some handlers to manage the file.
 
-### Given the next data: 
+### According to the data below
 
 ```
 81 : (1,53.38,€45) (2,88.62,€98) (3,78.48,€3) (4,72.30,€76) (5,30.18,€9) (6,46.34,€48)
@@ -18,7 +18,7 @@ It also has some validators to validate some constraints, mapper to convert the 
 56 : (1,90.72,€13) (2,33.80,€40) (3,43.15,€10) (4,37.97,€16) (5,46.81,€36) (6,48.77,€79) (7,81.80,€45) (8,19.36,€79) (9,6.76,€64)
 ```
 
-### The API will returns 
+### The API will return 
 
 ```
 4
